@@ -1,4 +1,4 @@
-package com.dp3.strategy1;
+package com.dp3.template;
 
 /**
  * Created by dpingxian on 2017/6/12.
