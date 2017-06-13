@@ -5,7 +5,8 @@ package com.dp3.Iterator;
  */
 public class Test {
     public static void main(String[] args) {
-        Collection collection = new MyCollection();
+        String[] names = {"A","B","C","D","E"};
+        Collection collection = new MyCollection(names);
         Iterator it = collection.iterator();
 
         while(it.hasNext()){

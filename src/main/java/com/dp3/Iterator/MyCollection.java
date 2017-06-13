@@ -4,7 +4,11 @@ package com.dp3.Iterator;
  * Created by dpingxian on 2017/6/12.
  */
 public class MyCollection implements Collection{
-    public String string[] = {"A","B","C","D","E"};
+    public String string[] = null;
+
+    public MyCollection(String[] string) {
+        this.string = string;
+    }
 
     public Iterator iterator() {
         return new MyIterator(this);
