@@ -1,4 +1,4 @@
-package com.lucene;
+package com.lucene.sed;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class IndexRepository {
         Path path = indexrepository_file.toPath();
         Directory directory = FSDirectory.open(path);
         // 读取原始文档内容
-        File files = new File("E://docindex");
+        File files = new File("E://Lucene//test2");
         // 创建一个分析器对象
         // 使用标准分析器
         Analyzer analyzer = new StandardAnalyzer();
