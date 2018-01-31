@@ -48,7 +48,7 @@ public class Drools5xTest {
 
         StringWriter writer = new StringWriter();
         VelocityContext context = new VelocityContext();
-        context.put("viewtest", "System.out.println(\"==viewtest====\");");
+        context.put("viewtest", "System.out.println(\"==viewtes===\");");
         List<String> globalList = new ArrayList<>();
         globalList.add("com.drools.executor.CompilerExecutor compilerExecutor");
         context.put("globalList", globalList);
