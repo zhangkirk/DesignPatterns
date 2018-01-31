@@ -35,7 +35,7 @@ public class Searcher {
 
 
 //        TermQuery query = new TermQuery(new Term("name","load_src_acctrans_trans_log"));
-        String queryStr = "D03";
+        String queryStr = "20141105020002400177";
 //        FuzzyQuery 模糊查询  TermQuery 完全匹配  QueryParser 多域查询
 //        BooleanQuery 组合查询
 

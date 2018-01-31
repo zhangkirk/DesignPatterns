@@ -1,0 +1,15 @@
+package com.rules;
+import com.drools.model.Product;
+#foreach($global in $globalList)
+global $global;
+#end
+
+rule Offer4Diamond
+when
+$productObject : Product(type == Product.DIAMOND)
+then
+$productObject.setDiscount(15);
+$viewtest
+compilerExecutor.exec("$key");
+end
+
