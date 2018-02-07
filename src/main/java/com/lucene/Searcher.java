@@ -35,7 +35,7 @@ public class Searcher {
 
 
 //        TermQuery query = new TermQuery(new Term("name","load_src_acctrans_trans_log"));
-        String queryStr = "20141105020002400177";
+        String queryStr = "SRC_ACCOUNT_TITLE";
 //        FuzzyQuery 模糊查询  TermQuery 完全匹配  QueryParser 多域查询
 //        BooleanQuery 组合查询
 
@@ -46,9 +46,10 @@ public class Searcher {
 
         // 执行查询
         // 返回的最大值，在分页的时候使用
-        TopDocs topDocs = indexSearcher.search(query, 5);
+        TopDocs topDocs = indexSearcher.search(query, 20);
         // 取查询结果总数量
         System.out.println("总共的查询结果：" + topDocs.totalHits);
+        System.out.println("");
         // 查询结果，就是documentID列表
         ScoreDoc[] scoreDocs = topDocs.scoreDocs;
 
@@ -62,14 +63,12 @@ public class Searcher {
             // 根据ID去document对象
             Document document = indexSearcher.doc(docID);
 
-            System.out.println("相关度得分：" + score);
-            System.out.println("");
-            System.out.println(document.get("name"));
-            System.out.println("");
+
+            System.out.println("文件名：" + document.get("name"));
             // 另外的一种使用方法
 //            System.out.println(document.getField("content").stringValue());
-            System.out.println(document.get("path"));
-            System.out.println();
+            System.out.println("路径：" + document.get("path"));
+            System.out.println("相关度得分：" + score);
             System.out.println("=======================");
         }
 
