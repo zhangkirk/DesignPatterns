@@ -19,17 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/1/9.
+ * Created by zhangke on 2018/1/9.
  */
 public class Indexer {
 
-    private static final String postfix =   ".ktr";
-
-    //        String dataDir = "E://Lucene//test2";
-//        String dataDir = "D:\\soft\\elk\\data-integration-yjf-trunk\\repository\\transformations\\comlev";
     private  static final String dataDir = "D:\\soft\\elk\\data-integration-yjf-trunk\\repository";
 
-    private  static final  String indexDir = "E://Lucene//test1";
+    private  static final  String indexDir = "D:\\soft\\elk\\data-integration-yjf-trunk-lucene\\20180223";
 
     private IndexWriter writer;
 
@@ -112,7 +108,11 @@ public class Indexer {
 
         @Override
         public boolean accept(File pathname) {
-            return pathname.getName().toLowerCase().endsWith(".ktr");
+            if(pathname.getName().toLowerCase().endsWith(".ktr") || pathname.getName().toLowerCase().endsWith(".kjb")){
+                return Boolean.TRUE;
+            }else{
+                return Boolean.FALSE;
+            }
         }
     }
 }

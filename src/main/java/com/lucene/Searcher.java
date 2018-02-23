@@ -17,27 +17,35 @@ import java.io.IOException;
 /**
  *
  * 可以研究下elasticsearch
- * Created by Administrator on 2018/1/9.
+ * Created by zhangke on 2018/1/9.
  */
 public class Searcher {
     public static void main(String[] args) throws IOException, ParseException {
-        String indexDir = "E://Lucene//test1";
-        search(indexDir);
+        String indexDir = "D:\\soft\\elk\\data-integration-yjf-trunk-lucene\\20180223";
+        String queryStr = "send_b2b_merchant_trade";
+        int queryNum = 20;
+        search(indexDir,queryStr,queryNum);
 
     }
 
-    public static void search(String indexDir) throws IOException, ParseException {
+    /**
+     *
+     * @param indexDir  索引目录
+     *                  @see com.lucene.Indexer
+     * @param queryStr  查询关键字
+     * @param queryNum  查询条数
+     * @throws IOException
+     * @throws ParseException
+     */
+    public static void search(String indexDir,String queryStr,int queryNum) throws IOException, ParseException {
         Directory directory = FSDirectory.open(new File(indexDir).toPath());
         IndexReader indexReader = DirectoryReader.open(directory);
         IndexSearcher indexSearcher = new IndexSearcher(indexReader);
         // 创建一个查询对象
-//        TermQuery query = new TermQuery(new Term("content","SRC_ACCTRANS_TRANS_LOG"));
-
-
-//        TermQuery query = new TermQuery(new Term("name","load_src_acctrans_trans_log"));
-        String queryStr = "SRC_ACCOUNT_TITLE";
-//        FuzzyQuery 模糊查询  TermQuery 完全匹配  QueryParser 多域查询
-//        BooleanQuery 组合查询
+//      TermQuery query = new TermQuery(new Term("content","SRC_ACCTRANS_TRANS_LOG"));
+//      TermQuery query = new TermQuery(new Term("name","load_src_acctrans_trans_log"));
+//      FuzzyQuery 模糊查询  TermQuery 完全匹配  QueryParser 多域查询
+//      BooleanQuery 组合查询
 
         QueryParser parser = new QueryParser("content",new StandardAnalyzer());
         parser.setDefaultOperator(QueryParser.AND_OPERATOR);
@@ -46,7 +54,7 @@ public class Searcher {
 
         // 执行查询
         // 返回的最大值，在分页的时候使用
-        TopDocs topDocs = indexSearcher.search(query, 20);
+        TopDocs topDocs = indexSearcher.search(query, queryNum);
         // 取查询结果总数量
         System.out.println("总共的查询结果：" + topDocs.totalHits);
         System.out.println("");
@@ -56,14 +64,10 @@ public class Searcher {
         for (ScoreDoc scoreDoc : scoreDocs) {
             // 取对象document的对象id
             int docID = scoreDoc.doc;
-
             // 相关度得分
             float score = scoreDoc.score;
-
             // 根据ID去document对象
             Document document = indexSearcher.doc(docID);
-
-
             System.out.println("文件名：" + document.get("name"));
             // 另外的一种使用方法
 //            System.out.println(document.getField("content").stringValue());

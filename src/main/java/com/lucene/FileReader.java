@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/1/9.
+ * Created by zhangke on 2018/1/9.
  */
 public class FileReader {
     public static List<String> ergdoic(File file,List<String> resultFileName){
@@ -15,9 +15,7 @@ public class FileReader {
         }
         for(File f:files){
             if(!f.isDirectory()){//如果不是文件夹
-                if(f.getName().endsWith(".ktr")){
-                    resultFileName.add(f.getPath());
-                }
+                resultFileName.add(f.getPath());
             }else{
                 ergdoic(f,resultFileName);//如果是文件夹进行递归
             }
