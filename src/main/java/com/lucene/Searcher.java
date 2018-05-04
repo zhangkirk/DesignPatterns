@@ -22,8 +22,8 @@ import java.io.IOException;
 public class Searcher {
     public static void main(String[] args) throws IOException, ParseException {
         String indexDir = "D:\\soft\\elk\\data-integration-yjf-trunk-lucene\\20180223";
-        String queryStr = "send_b2b_merchant_trade";
-        int queryNum = 20;
+        String queryStr = "src_account_vouchers";
+        int queryNum = 50;
         search(indexDir,queryStr,queryNum);
 
     }
