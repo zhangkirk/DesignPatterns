@@ -32,7 +32,6 @@ public class CertTest2 {
 		
 		String charsetName = "UTF-8";
 		String message = "子龙";
-
 		//加密
 		//cer格式的数字证书里面只有公钥没有私钥
 		X509Certificate publicCert;
